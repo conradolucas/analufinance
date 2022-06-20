@@ -1,0 +1,27 @@
+{
+  "name": "analufinance",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "test": "jest"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*",
+      "packages/**/*"
+    ]
+  },
+  "author": "Lucas Conrado <oconradolucas@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@analufinance/eslint-config": "*",
+    "@types/jest": "^28.1.2",
+    "@types/node": "^18.0.0",
+    "jest": "^28.1.1",
+    "ts-jest": "^28.0.5",
+    "ts-node": "^10.8.1",
+    "tsconfig-paths": "^4.0.0",
+    "typescript": "^4.7.4"
+  }
+}
