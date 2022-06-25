@@ -22,6 +22,23 @@ export class Card {
     };
   }
 
+  updateDueDay(newDueDay: number) {
+    const MIN_DAYS_ON_MONTH = 1;
+    const MAX_DAYS_ON_MONTH = 31;
+    if (newDueDay < MIN_DAYS_ON_MONTH || newDueDay > MAX_DAYS_ON_MONTH)
+      throw new Error(`The day (${newDueDay}) is invalid, please informing a day 1-31`);
+
+    this.due_day = newDueDay;
+  }
+
+  get due_day() {
+    return this.card.due_day;
+  }
+
+  private set due_day(value: number) {
+    this.card.due_day = value;
+  }
+
   updateClosingDay(newClosingDay: number) {
     const MIN_DAYS_ON_MONTH = 1;
     const MAX_DAYS_ON_MONTH = 31;
