@@ -162,4 +162,35 @@ describe('Card Entity', () => {
       });
     });
   });
+
+  describe('toJSON', () => {
+    let visaGold: Card;
+
+    beforeAll(() => {
+      const visaGoldProps: CardProps = {
+        number: '123456',
+        flag: 'visa',
+        cvv: '123',
+        since_at: '25/05/1997',
+        valid_at: '27/07/2019',
+        due_day: 15,
+        closing_day: 10,
+      };
+
+      visaGold = new Card(visaGoldProps);
+    });
+
+    it('should return object with properties of card entity', async () => {
+      expect(visaGold.toJSON()).toStrictEqual({
+        id: visaGold.card.id,
+        number: '123456',
+        flag: 'visa',
+        cvv: '123',
+        since_at: '25/05/1997',
+        valid_at: '27/07/2019',
+        due_day: 15,
+        closing_day: 10,
+      });
+    });
+  });
 });

@@ -55,4 +55,11 @@ export class Card {
   private set closing_day(value: number) {
     this.card.closing_day = value;
   }
+
+  toJSON() {
+    return {
+      id: this.id,
+      ...this.card,
+    };
+  }
 }
