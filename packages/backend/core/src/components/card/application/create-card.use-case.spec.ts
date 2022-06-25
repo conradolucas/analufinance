@@ -16,8 +16,6 @@ describe('CreateRouteUseCase Tests', () => {
       closing_day: 10,
     });
 
-    console.log(repository);
-
     expect(output).toStrictEqual({
       id: repository.items[0].card.id,
       number: '123456',
