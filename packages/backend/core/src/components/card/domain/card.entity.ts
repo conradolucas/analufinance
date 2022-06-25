@@ -23,9 +23,10 @@ export class Card {
   }
 
   updateClosingDay(newClosingDay: number) {
+    const MIN_DAYS_ON_MONTH = 1;
     const MAX_DAYS_ON_MONTH = 31;
-    if (newClosingDay > MAX_DAYS_ON_MONTH)
-      throw new Error(`The day (${newClosingDay}) is invalid, please informing a day 0-31`);
+    if (newClosingDay < MIN_DAYS_ON_MONTH || newClosingDay > MAX_DAYS_ON_MONTH)
+      throw new Error(`The day (${newClosingDay}) is invalid, please informing a day 1-31`);
 
     this.closing_day = newClosingDay;
   }
