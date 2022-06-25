@@ -40,7 +40,7 @@ describe('Card Entity', () => {
     beforeAll(() => {
       const eloNanquimProps: CardProps = {
         number: '123456',
-        flag: 'visa',
+        flag: 'eloNanquim',
         cvv: '123',
         since_at: '25/05/1997',
         valid_at: '27/07/2019',
@@ -66,17 +66,32 @@ describe('Card Entity', () => {
     });
 
     describe('when updating the closing day contain a invalid day', () => {
-      const invalidDay = 32;
+      const maxDay = 31;
+      const minDay = 1;
 
-      it('should return a business error informing that the day is not valid', () => {
-        expect(() => {
-          eloNanquim.updateClosingDay(invalidDay);
-        }).toThrow(`The day (${invalidDay}) is invalid, please informing a day 0-31`);
+      describe('when updating the closing day contain a day that more than max day', () => {
+        const invalidDayMax = maxDay + 1;
+
+        it('should return a business error informing that the day is not valid', () => {
+          expect(() => {
+            eloNanquim.updateClosingDay(invalidDayMax);
+          }).toThrow(`The day (${invalidDayMax}) is invalid, please informing a day 1-31`);
+        });
+      });
+
+      describe('when updating the closing day contain a day that smaller than min day', () => {
+        const invalidDayMin = minDay - 1;
+
+        it('should return a business error informing that the day is not valid', () => {
+          expect(() => {
+            eloNanquim.updateClosingDay(invalidDayMin);
+          }).toThrow(`The day (${invalidDayMin}) is invalid, please informing a day 1-31`);
+        });
       });
 
       it('should not change the closing day', () => {
         expect(() => {
-          eloNanquim.updateClosingDay(invalidDay);
+          eloNanquim.updateClosingDay(0);
         }).toThrow();
         expect(eloNanquim.closing_day).toBe(defaultClosingDay);
       });
